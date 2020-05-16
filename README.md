@@ -73,6 +73,7 @@ Devuelve el número de entidades que tienen asignada una condición.
 Esta condición se selecciona previamente con *set cond
 
 *ElemsNum: Devuelve el número del Elemento.
+
 *NodesNum: Devuelve el número del Nodo.
 
 *NodesCoord. 
@@ -81,6 +82,7 @@ Devuelve las coordenadas de un nodo, debe estar dentro de un *loop
 Recibe como argumento un número entre 1 a 3.
 
 *NodesCoord(1) devuelve la coordenada en X.
+
 *NodesCoord(2) devuelve la coordenada en Y.
 
 *ElemsConec. 
