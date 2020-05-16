@@ -37,11 +37,11 @@ VALUE: 0
 END CONDITION
 ```
 
-CONDTYPE: Type of entity which the condition is to be applied to. 
-This includes the parameters "over points", "over lines", "over surfaces", “over volumes” or "over layers". 
+CONDTYPE: Entidad donde se aplicaran las condiciones.
+Acepta como parametros: "over points", "over lines", "over surfaces", “over volumes”, "over layers". 
 
-CONDMESHTYPE: Type of entity of the mesh where the condition is to be applied. 
-The possible parameters are "over nodes", "over body elements" or “over face elements”. 
+CONDMESHTYPE: Entidad de la malla donde se aplicaran las condiciones.
+Acepta como parametros: "over nodes", "over body elements", “over face elements”. 
 
 ### Materials File (.mat)
 
@@ -56,40 +56,39 @@ END MATERIAL
 
 ### Template File (.bas)
 
-Describes the format and structure of the required data input file for the solver that is used for a
-particular case. 
+Describe la estructura de la data que se utilizara como entrada para el problema a resolver.
 
 #### Comandos utilizados en este archivo
 
-All these commands must be prefixed by a character *
+Los comandos deben ser precedidos por el caracter *
 
-*GenData. This must carry an argument of integer type that specifies the number of the field to be printed. This
-number is the order of the field inside the general data list. This must be one of the values that are fixed for the whole
-problem, independently of the interval 
+*GenData 
+Recibe como argumento un entero que especifica el campo del data list e imprime ese dato.  
 
-*npoin, *ndime, *nnode, *nelem, *nmats, *nintervals. These return, respectively, the number of points, the
-dimensions of the project being considered, the number of nodes of the element with the highest number, the number
-of elements, the number of materials and the number of data intervals. All of them are considered as integers 
+*npoin, *nelem 
+Devuelven el número de nodos y el número de elementos respectivamente.
 
-*CondNumEntities. You must have previously selected a condition (see *set cond). This returns the number of
-entities that have a condition assigned over them.
-*ElemsNum: This returns the element's number.
-*NodesNum: This returns the node's number.
+*CondNumEntities
+Devuelve el número de entidades que tienen asignada una condición.
+Esta condición se selecciona previamente con *set cond
 
-*NodesCoord. This command writes the node's coordinates. It must be inside a loop (see *loop) over the nodes or
-elements. 
+*ElemsNum: Devuelve el número del Elemento.
+*NodesNum: Devuelve el número del Nodo.
 
-If *NodesCoord receives an integer argument (from 1 to 3) inside a loop of nodes, this argument indicates which
-coordinate must be written: x, y or z. Inside a loop of nodes:
-*NodesCoord writes three or two coordinates depending on how many dimensions there are.
-*NodesCoord(1) writes the x coordinate of the actual node of the loop.
-*NodesCoord(2) writes the y coordinate of the actual node of the loop.
+*NodesCoord. 
+Devuelve las coordenadas de un nodo, debe estar dentro de un *loop
 
-*ElemsConec. This command writes the element's connectivities, i.e. the list of the nodes that belong to the element,
-displaying the direction for each case.
+Recibe como argumento un número entre 1 a 3.
 
-The *OnlyInCond modifier implies that the iteration will only take place over the entities that satisfy the relevant
-condition. This condition must have been previously defined with *set cond. 
+*NodesCoord(1) devuelve la coordenada en X.
+*NodesCoord(2) devuelve la coordenada en Y.
+
+*ElemsConec. 
+Devuelve la lista de nodos que pertenecen a un elemento.
+
+*OnlyInCond
+La iteración solo incluirá entidades que tienen asignada una condición.
+Esta condición se selecciona previamente con *set cond
 
 <hr>
 <p align="center">Para servirles, <strong>Equipo de Instructores</strong> </p>
